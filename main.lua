@@ -34,6 +34,7 @@ local sheetWalkNinja = graphics.newImageSheet('./Assets/SpriteSheets/ninjaBoyRun
 
 -- Sequence data for ninja
 local sequence_data_ninja = {
+{
 	name = 'idle',
 	start = 1,
 	count = 10,
@@ -48,6 +49,7 @@ local sequence_data_ninja = {
 	time = 800,
 	loopCount = 0,
 	sheet = sheetWalkNinja
+}
 }
 
 -- The robot elements
@@ -69,6 +71,7 @@ local sheetWalkRobot = graphics.newImageSheet('./Assets/SpriteSheets/robotRun.pn
 
 -- Sequence data for robot
 local sequence_data_robot = {
+{
 	name = 'idle',
 	start = 1,
 	count = 10,
@@ -83,6 +86,7 @@ local sequence_data_robot = {
 	time = 800,
 	loopCount = 0,
 	sheet = sheetWalkRobot
+}
 }
 
 -- Sprites
@@ -109,7 +113,7 @@ rightArrow.id = 'Right arrow'
 local ninja = display.newSprite(sheetIdleNinja, sequence_data_ninja)
 ninja.x = centerX 
 ninja.y = centerY * 1.5
-ninja:setSequence('walk')
+ninja:setSequence('idle')
 ninja:play()
 
 local robot = display.newSprite(sheetIdleRobot, sequence_data_robot)
@@ -121,14 +125,14 @@ robot:play()
 -- Functions
 function rightArrow:touch(event)
 	if (event.phase == 'ended') then
-		transition.moveBy(ninja, {
+		transition.moveBy(robot, {
 			x = 150,
 			y = 0,
 			time = 800
 			})
 
-		ninja:setSequence( 'walk' )
-    	ninja:play()
+		robot:setSequence( 'walk' )
+    	robot:play()
     	print("walk")
     end
 end
