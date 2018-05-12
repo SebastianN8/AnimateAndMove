@@ -128,7 +128,7 @@ function rightArrow:touch(event)
 		transition.moveBy(robot, {
 			x = 150,
 			y = 0,
-			time = 800
+			time = 800,
 			})
 
 		robot:setSequence( 'walk' )
