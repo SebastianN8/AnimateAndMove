@@ -84,7 +84,7 @@ local sequence_data_robot = {
 	start = 1,
 	count = 8,
 	time = 800,
-	loopCount = 0,
+	loopCount = 1,
 	sheet = sheetWalkRobot
 }
 }
@@ -137,6 +137,14 @@ function rightArrow:touch(event)
     end
 end
 
+local function resetToIdle(event)
+	if (event.phase == 'ended') then 
+		robot:setSequence('idle')
+		robot:play()
+	end
+end
+
 
 -- Event Listeners
 rightArrow:addEventListener('touch', rightArrow)
+robot:addEventListener('sprite', resetToIdle)
